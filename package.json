@@ -63,8 +63,8 @@
                     {
                         "type": "input",
                         "placeholder": {
-                            "es": "",
-                            "en": ""
+                            "es": "database_name",
+                            "en": "database_name"
                         },
                         "title": {
                             "es": "Base de datos:",
@@ -76,8 +76,8 @@
                     {
                         "type": "input",
                         "placeholder": {
-                            "es": "{user}",
-                            "en": "{user}"
+                            "es": "Rocketbot",
+                            "en": "Rocketbot"
                         },
                         "title": {
                             "es": "Usuario:",
@@ -89,8 +89,8 @@
                     {
                         "type": "input",
                         "placeholder": {
-                            "es": "{password}",
-                            "en": "{password}"
+                            "es": "secr3t_p@ss",
+                            "en": "secr3t_p@ss"
                         },
                         "title": {
                             "es": "Contraseña:",
@@ -102,8 +102,8 @@
                     {
                         "type": "input",
                         "placeholder": {
-                            "es": "{resultado}",
-                            "en": "{result}"
+                            "es": "conectado",
+                            "en": "connected"
                         },
                         "title": {
                             "es": "Resultado",
