@@ -96,7 +96,7 @@
                             "es": "Contraseña:",
                             "en": "Password:"
                         },
-                        "id": "port",
+                        "id": "pass",
                         "css": "col-md-6"
                     },
                     {
@@ -151,8 +151,8 @@
                     {
                         "type": "input",
                         "placeholder": {
-                            "es": "",
-                            "en": ""
+                            "es": "select * from db",
+                            "en": "select * form db"
                         },
                         "title": {
                             "es": "Consulta",
@@ -164,8 +164,8 @@
                     {
                         "type": "input",
                         "placeholder": {
-                            "es": "{resultado}",
-                            "en": "{result}"
+                            "es": "resultado",
+                            "en": "result"
                         },
                         "title": {
                             "es": "Resultado",
