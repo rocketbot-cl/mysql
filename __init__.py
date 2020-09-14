@@ -63,16 +63,17 @@ if module =="query":
 
     try:
         conn = pymysql.connect(**mysql_module)
-        conn.cursor().execute(query)
+        cursor = conn.cursor()
+        cursor.execute(query)
         if query.upper().startswith('SELECT'):
-            data_ = conn.fetchall()  # Traer los resultados de un select
+            data_ = cursor.fetchall()  # Traer los resultados de un select
             for r in data_:
                 for d in r:
                     if isinstance(r[d], datetime.date):
                         r[d] = r[d].strftime("%d-%m-%Y %H:%M:%S")
             data = data_
         else:
-            conn.commit()  # Hacer efectiva la escritura de datos
+            cursor.commit()  # Hacer efectiva la escritura de datos
             data = True
         conn.close()
 
