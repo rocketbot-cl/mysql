@@ -63,7 +63,7 @@ if module =="query":
 
     try:
         conn = pymysql.connect(**mysql_module)
-        cursor = conn.cursor()
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
         cursor.execute(query)
         if query.upper().startswith('SELECT'):
             data_ = cursor.fetchall()  # Traer los resultados de un select
