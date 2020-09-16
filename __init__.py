@@ -73,12 +73,12 @@ if module =="query":
                         r[d] = r[d].strftime("%d-%m-%Y %H:%M:%S")
             data = data_
         else:
-            cursor.commit()  # Hacer efectiva la escritura de datos
+            conn.commit()  # Hacer efectiva la escritura de datos
             data = True
         conn.close()
-
         SetVar(var_, data)
     except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
         PrintException()
         conn.close()
         raise Exception(e)
