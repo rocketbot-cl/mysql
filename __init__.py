@@ -41,6 +41,8 @@ if module == "connect":
     var_ = GetParams("result")
 
     try:
+        if not port or port == "":
+            port = 3306
         port = int(port)
         r = pymysql.connect(host=host, port=port, user=user, password=password, database=database)
         res = r.open
