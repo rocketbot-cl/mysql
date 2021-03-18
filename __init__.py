@@ -27,9 +27,18 @@ import pymysql
 import datetime
 global mysql_module
 
-"""
-    Obtengo el modulo que fueron invocados
-"""
+# Globals declared here
+global mod_mysql_sessions
+# Default declared here
+SESSION_DEFAULT = "default"
+# Initialize settings for the module here
+try:
+    if not mod_mysql_sessions:
+        mod_mysql_sessions = {SESSION_DEFAULT: {}}
+except NameError:
+    mod_mysql_sessions = {SESSION_DEFAULT: {}}
+
+
 module = GetParams("module")
 
 if module == "connect":
@@ -38,22 +47,33 @@ if module == "connect":
     user = GetParams("user")
     password = GetParams("pass")
     database = GetParams("db")
+    session = GetParams('session')
     var_ = GetParams("result")
 
     try:
         if not port or port == "":
             port = 3306
         port = int(port)
+
+        if not session:
+            session = SESSION_DEFAULT
+
         r = pymysql.connect(host=host, port=port, user=user, password=password, database=database)
         res = r.open
-        r.close()
         mysql_module = {
-                    'port':port,
-                    'host': host,
-                    'user': user,
-                    'password': password,
-                    'database': database
-                }
+            'port': port,
+            'host': host,
+            'user': user,
+            'password': password,
+            'database': database
+        }
+        conn = pymysql.connect(**mysql_module)
+        cursor = conn.cursor(pymysql.cursors.DictCursor)
+        mod_mysql_sessions[session] = {
+            "connection": r,
+            "cursor": cursor
+        }
+        #r.close()
         SetVar( var_,  res)
     except Exception as e:
         PrintException()
@@ -61,11 +81,12 @@ if module == "connect":
 
 if module =="query":
     query = GetParams("query")
+    session = GetParams('session')
     var_ = GetParams("result")
 
     try:
-        conn = pymysql.connect(**mysql_module)
-        cursor = conn.cursor(pymysql.cursors.DictCursor)
+        cursor = mod_mysql_sessions[session]["cursor"]
+        conn = mod_mysql_sessions[session]["connection"]
         cursor.execute(query)
         if query.upper().startswith('SELECT'):
             data_ = cursor.fetchall()  # Traer los resultados de un select
@@ -77,12 +98,29 @@ if module =="query":
         else:
             conn.commit()  # Hacer efectiva la escritura de datos
             data = True
-        conn.close()
+        #conn.close()
         SetVar(var_, data)
     except Exception as e:
         print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
         PrintException()
         conn.close()
         raise Exception(e)
+
+
+if module == "close":
+    session = GetParams('session')
+
+    if not session:
+        session = SESSION_DEFAULT
+
+    cursor = mod_mysql_sessions[session]["cursor"]
+    con = mod_mysql_sessions[session]["connection"]
+
+    try:
+        cursor.close()
+        con.close()
+    except Exception as e:
+        PrintException()
+        raise e
 
 

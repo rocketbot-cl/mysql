@@ -6,19 +6,17 @@ Module to work with mysql. Use only if native Rocketbot command not working
 <ul id="commands_readme">
     <li>Connect</li>
     <li>Query MySQL</li>
+    <li>Close connection</li>
 </ul>
 
 
 ![alt text](https://raw.githubusercontent.com/rocketbot-cl/mysql/master/example/mysql.png)
 
 
-<ul>
-  <li>
-    <strong>
-      <a href="https://pypi.org/project/mail-parser/">mail-parser</a>
-    </strong> 
-  </li>  
-</ul>  
+## Updates
+### 18-Mar-2021
+- Close connection: You can close a connection.
+- Session: You be able to have many connections.
 
 <h2>License</h2>
 
