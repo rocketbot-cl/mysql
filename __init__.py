@@ -123,4 +123,32 @@ if module == "close":
         PrintException()
         raise e
 
+if module == "getLastInsertedId":
+    session = GetParams('session')
+    var_ = GetParams("result")
+
+    if not session:
+        session = SESSION_DEFAULT
+    
+    cursor = mod_mysql_sessions[session]["cursor"]
+    conn = mod_mysql_sessions[session]["connection"]
+    
+    table = GetParams("table")
+    primaryKey = GetParams("primaryKey")
+    if not primaryKey:
+        primaryKey = "id"
+    
+    query = f"SELECT * FROM {table} WHERE {primaryKey}=(SELECT LAST_INSERT_ID())"
+    cursor.execute(query)
+    
+    data_ = cursor.fetchall()  # Traer los resultados de un select
+    for r in data_:
+        for d in r:
+            if isinstance(r[d], datetime.date):
+                r[d] = r[d].strftime("%d-%m-%Y %H:%M:%S")
+    data = data_
+
+    SetVar(var_, data)
+
+    
 

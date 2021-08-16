@@ -7,6 +7,7 @@ Module to work with mysql. Use only if native Rocketbot command not working
     <li>Connect</li>
     <li>Query MySQL</li>
     <li>Close connection</li>
+    <li>Get the last row inserted</li>
 </ul>
 
 
