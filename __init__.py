@@ -65,7 +65,8 @@ if module == "connect":
             'host': host,
             'user': user,
             'password': password,
-            'database': database
+            'database': database,
+            'autocommit': True
         }
         conn = pymysql.connect(**mysql_module)
         cursor = conn.cursor(pymysql.cursors.DictCursor)
@@ -96,7 +97,8 @@ if module =="query":
                         r[d] = r[d].strftime("%d-%m-%Y %H:%M:%S")
             data = data_
         else:
-            conn.commit()  # Hacer efectiva la escritura de datos
+            conn.commit()
+            # Hacer efectiva la escritura de datos
             data = True
         #conn.close()
         SetVar(var_, data)
