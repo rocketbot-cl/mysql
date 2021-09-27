@@ -86,6 +86,8 @@ if module =="query":
     var_ = GetParams("result")
 
     try:
+        if not session:
+            session = SESSION_DEFAULT
         cursor = mod_mysql_sessions[session]["cursor"]
         conn = mod_mysql_sessions[session]["connection"]
         cursor.execute(query)
