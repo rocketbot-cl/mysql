@@ -1,28 +1,44 @@
-# mysql
-Module to work with mysql. Use only if native Rocketbot command not working 
+# MySQL
+  
+Module for working with MySQL database. Use only if the native version of the command does not work
 
-## Commands
+*Read this in other languages: [English](README.md), [Español](README.es.md).*
 
-<ul id="commands_readme">
-    <li>Connect</li>
-    <li>Query MySQL</li>
-    <li>Close connection</li>
-    <li>Get the last row inserted</li>
-</ul>
+## How to install this module
+  
+__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
 
 
-![alt text](https://raw.githubusercontent.com/rocketbot-cl/mysql/master/example/mysql.png)
+
+## Overview
 
 
-## Updates
-### 18-Mar-2021
-- Close connection: You can close a connection.
-- Session: You be able to have many connections.
+1. Connect  
+Configure MySQL connection to server, can use identifier for change between others connections
 
-<h2>License</h2>
+2. Query MySQL  
+Create MySQL query (Select, insert, delete, etc)
 
-<p><a href="http://badges.mit-license.org" rel="nofollow"><img src="https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265" alt="License" data-canonical-src="http://img.shields.io/:license-mit-blue.svg?style=flat-square" style="max-width:100%;"></a></p>
+3. Get last row inserted  
+Gets the last row inserted
 
-<ul>
-  <li><strong><a href="http://opensource.org/licenses/mit-license.php" rel="nofollow">MIT license</a></strong></li>
-</ul>  
+4. Close connection  
+Close oracle connection for session  
+
+
+
+
+----
+### OS
+
+- windows
+- mac
+- linux
+- docker
+
+### Dependencies
+
+### License
+  
+![MIT](https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265)  
+[MIT](http://opensource.org/licenses/mit-license.ph)
