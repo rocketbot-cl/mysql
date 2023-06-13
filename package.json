@@ -1,10 +1,15 @@
 {
   "author": "Danilo Toro",
-  "description": "Módulo para trabajar con base de datos MySQL. Usar solo si no funciona la versión nativa del comando",
+  "description": "Module to work with MySQL database. Use only if the native version of the command does not work",
+  "description_lang": {
+    "es": "Módulo para trabajar con base de datos MySQL. Usar solo si no funciona la versión nativa del comando",
+    "en": "Module to work with MySQL database. Use only if the native version of the command does not work",
+    "pr": "Módulo para trabalhar com banco de dados MySQL. Use apenas se a versão nativa do comando não funcionar"
+  },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "license": "MIT",
-  "homepage": "http://rocketbot.co",
+  "homepage": "http://rocketbot.com",
   "linux": true,
   "windows": true,
   "mac": true,
@@ -13,7 +18,8 @@
   "dependencies": {},
   "title": {
     "en": "MySQL",
-    "es": "MySQL"
+    "es": "MySQL",
+    "pr": "MySQL"
   },
   "icon": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggc3R5bGU9ImZpbGw6I0YyRjJGMjsiIGQ9Ik01MTIsMjU2YzAsMzYuOTM3LTcuODI2LDcyLjA1Ni0yMS45MTEsMTAzLjc2OWMtMi4yODgsNS4xODMtNC43NjUsMTAuMjcxLTcuMzg3LDE1LjI2Ng0KCUM0MzkuODUsNDU2LjQ3NCwzNTQuNDA4LDUxMiwyNTYsNTEyYy0xMDMuNjg1LDAtMTkyLjk3Mi02MS42MzktMjMzLjIyMS0xNTAuMjc3Yy03LjAyMi0xNS40NjQtMTIuNTQ5LTMxLjc0NC0xNi4zOTQtNDguNjYxDQoJQzIuMjA1LDI5NC43MTMsMCwyNzUuNjEzLDAsMjU2QzAsMTE0LjYxNSwxMTQuNjE1LDAsMjU2LDBjMTE1LjAxMiwwLDIxMi4zMDIsNzUuODM5LDI0NC42MTEsMTgwLjI0NQ0KCWMxLjAyNCwzLjMyMywxLjk4NSw2LjY4NywyLjg4NCwxMC4wNzN2MC4wMWMxLjY3Miw2LjMzMiwzLjExNCwxMi43MzcsNC4zMDUsMTkuMjQ3YzAuNTU0LDMuMDMsMS4wNTUsNi4wNzEsMS40OTQsOS4xMzINCgljMC4zMDMsMi4wNDgsMC41ODUsNC4wOTYsMC44MjUsNi4xNjVjMC40NiwzLjY5OSwwLjgyNSw3LjQyOSwxLjExOCwxMS4xOEM1MTEuNzM5LDI0Mi42MzYsNTEyLDI0OS4yOTIsNTEyLDI1NnoiLz4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1MTgxQTI7IiBkPSJNMzY3Ljk2MSw3Ny42MTRjMCwwLDcuNDIsNy42MzIsOC42OTEsMTMuMzU1YzAsMCw1LjMtNC4wMjgsMS42OTYtMTAuMzg3DQoJCUMzNzQuNzQ0LDc0LjIyMiwzNjcuOTYxLDc3LjYxNCwzNjcuOTYxLDc3LjYxNHoiLz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojNTE4MUEyOyIgZD0iTTUwMy40OTUsMTkwLjMxOGMtNi42NjYtMy4zNTQtMTIuNzI3LTUuMzM5LTE3LjQ3MS02LjUxYy02LjQxNi0xLjU4OC0xMS42MDktNi4zMTEtMTMuODU1LTEyLjUyOA0KCQljLTIuODg0LTcuOTczLTguMjU1LTIwLjg4OC0xOC4xMzktNDAuNDU4Yy0xOS41MDgtMzguNTc4LTQxLjEyNy01MC40NDgtNTUuMzI3LTYwLjQxNmMtOS4zMi02LjU0MS0yMS41NjctNy44NjgtMjguODgxLTguMDE0DQoJCWMtMy42ODgtMC4wNzMtNy4yNDEtMS40MjEtMTAuMDczLTMuNzkzYy03LjQ1LTYuMjY5LTIyLjEtMTMuNjM2LTI2Ljc2LTEwLjg3N2MtNS43MjYsMy4zOTYsMCwxMS4yNDMsOC4wNDYsMjEuMjAxDQoJCWM4LjA1Niw5Ljk2OCw5Ljc1OSwyMC45OTIsMTUuNDc1LDM1LjgzYzIuNjQ0LDYuODQ0LDUuODMxLDEwLjk4Miw4LjQ4NSwxMy40NDhjMi43NzksMi41OTEsMy42ODgsNi42MTQsMi4yMTUsMTAuMTA0DQoJCWMtNS4zNzEsMTIuNjk2LTcuMTY4LDI4Ljc3Ni00LjEyNyw0My42NDVjMy42MDUsMTcuNTk2LDExLjg3LDE3LjM4NywxMS44NywxNy4zODdjLTAuODQ2LTIzLjUzMSwxMS40NTItMzMuNzA4LDExLjQ1Mi0zMy43MDgNCgkJYzExLjIzMywzNC4zMzUsMzYuODg1LDU5Ljk4OCwzNi44ODUsNTkuOTg4Yy0yMC43NzMtNy40MTktMzYuMjQ3LTQxLjMzNi0zNi4yNDctNDEuMzM2cy0xLjY5MywxLjY5My0zLjE3NywxMi45MzYNCgkJYy0xLjQ4NCwxMS4yMzMtMTUuMDU3LDE4LjAxNC0yNS4wMTUtNi41NzJjLTkuOTY4LTI0LjU5NywyLjk2Ny01NS41NDcsMi45NjctNTUuNTQ3Yy01LjcyNi0yLjk2OC0xNy41OTYtMzAuMzEyLTE3LjU5Ni0zNC41NTUNCgkJYzAtNC4yMzItNC42NzEtMTMuNTYzLTEwLjM4Ni0xOS4yODljLTUuNzI2LTUuNzE2LTE2Ljk1OS0yMi4yNTYtMy44MTQtMjkuODg0YzEzLjEzNC03LjYzOCwzOS4yMTUsMTIuOTI1LDM5LjIxNSwxMi45MjUNCgkJYzQxLjEyNy0xLjQ4NCw4My41MTksNDguNTQ2LDkwLjMsNjYuMzUxYzYuNzgxLDE3LjgwNSwyNS44NjEsNTMuNDI2LDI1Ljg2MSw1My40MjZjNS40MTMsMS42NDEsMTAuNTAxLDMuNzYyLDE1LjIxNCw2LjE3NQ0KCQlDNTAxLjYzNSwxODMuNTY4LDUwMi41OTYsMTg2LjkzMiw1MDMuNDk1LDE5MC4zMTh6Ii8+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzUxODFBMjsiIGQ9Ik01MTEuMjM3LDIzNi4wNTNjLTAuMjA5LTAuMDk0LTAuNDA4LTAuMTk5LTAuNjA2LTAuMjkzYy0xMy4xNDUtNi4zNjMtMTguNDQyLTE5LjcxNy0xOC40NDItMTkuNzE3DQoJCWMzLjQwNi0zLjQwNiw5LjQ0Ni01LjM2LDE1LjYxMS02LjQ2OGMwLjU1NCwzLjAzLDEuMDU1LDYuMDcxLDEuNDk0LDkuMTMyYy0yLjI5OSwwLjQ0OS0zLjc1MSwwLjcyMS0zLjc1MSwwLjcyMQ0KCQljMCwxLjI5NiwxLjgwOCwzLjIyOSw0LjU3Nyw1LjQ0NEM1MTAuNTc5LDIyOC41NzEsNTEwLjk0NSwyMzIuMzAyLDUxMS4yMzcsMjM2LjA1M3oiLz4NCjwvZz4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRkE2MDA7IiBkPSJNMTMzLjM3MSwzNzQuNjU5SDExMy4zNGMwLDAsMC00NS43NzctNi42NzctMTAwLjE1M0w3NS4xOCwzNzQuNjU5SDU4Ljk2NGwtMzEuOTUzLTk5LjY3Mw0KCQljMCwwLTMuNzIsMjkuMjg4LTQuMjMyLDg2LjczN2MtNy4wMjItMTUuNDY0LTEyLjU0OS0zMS43NDQtMTYuMzk0LTQ4LjY2MWMxLjQ3My0yMS4yNjQsMy41NDItNDQuNDQsNi4zMjItNjMuMzUyaDI2LjA3DQoJCWwyOS43MjcsOTIuNTI2bDMxLjQ4My05Mi41MjZoMjMuODQ1QzEyMy44MzEsMjQ5LjcxLDEzMy4zNzEsMzMxLjI2NCwxMzMuMzcxLDM3NC42NTl6Ii8+DQoJPHBhdGggc3R5bGU9ImZpbGw6I0ZGQTYwMDsiIGQ9Ik0xNDQuNDIzLDI4My40NTJsMjAuNjY4LTAuMzE4YzAsMCwyMy4yMTIsNjkuNjM3LDIwLjk4Nyw3OC4yMjJjMCwwLDE0Ljk0NS00MS42NTUsMTguNzYxLTc4LjIyMg0KCQloMjAuMzVjMCwwLTEwLjgxMiw3My43NzEtNDMuODgsMTEyLjU2NGMtMTIuMzc1LDE0LjUxNy0yNi4yNjIsMTQuNjk1LTM4Ljc5OSw5LjIzNnYtMTEuMTQzYzAsMCwxNy4xNzcsNi4wNDIsMjYuMDgxLTYuNjc4DQoJCWM3LjE2OC0xMC4yNCwwLjMyMi0yNy44OTgtNS45MzgtNDYuNjcxQzE2MS4xMzUsMzM1Ljg5NiwxNDQuNDIzLDI4My40NTIsMTQ0LjQyMywyODMuNDUyeiIvPg0KPC9nPg0KPGc+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzUxODFBMjsiIGQ9Ik0yMzcuOTA4LDM2NS40OTFsNS40MDUtMTAuODEyYzAsMCwzNy4yMDQsMTYuNTM0LDQ2Ljc0MiwwYzkuNTM5LTE2LjUzNCwwLjMxOC0yNS40MzgtMTguNDQyLTM1LjI5Ng0KCQljLTE4Ljc2LTkuODU4LTM4LjQ3NS0yMi4yNTgtMjkuODktNDkuMjg3YzguNTg2LTI3LjAyOCw1NC4wNTYtMjUuMTIsNjcuMDkzLTEyLjA4M2wtNC40NTEsMTAuNDkzYzAsMC0zMy43MDUtMTQuMzA5LTQyLjkyNiw0LjQ1MQ0KCQljLTkuMjIxLDE4Ljc2LDE1LjI2MywyNy42NjQsMjAuOTg3LDMwLjIwOGM1LjcyNCwyLjU0NCwzNy41MjEsMTUuNTgsMzQuMDI0LDM4Ljc5M3MtMTcuODA3LDM3LjUyMS01MC41NTgsMzQuNjU5DQoJCUMyNTQuMTI0LDM3My43NTgsMjQ3LjQ0NywzNzEuODUsMjM3LjkwOCwzNjUuNDkxeiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1MTgxQTI7IiBkPSJNNDA1LjQ1MiwzNjdjMTQuMDU0LTExLjI5NSwyMC4wODMtMzEuMzg5LDIwLjA4My01NC4yOTNjMC0zNS4zMjgtMTAuMTY3LTYzLjk2OS01MC4zMzMtNjMuOTY5DQoJCWMtMzQuNTg2LDAtNTAuMzMzLDI4LjY0MS01MC4zMzMsNjMuOTY5czExLjUxNSw2My45NjksNTAuMzMzLDYzLjk2OWM1LjYyMiwwLDEwLjcyMS0wLjcsMTUuMzE4LTIuMDE3bDI5LjkwNSwxNy41NDRsNy4zMTQtMTQuMzE1DQoJCUw0MDUuNDUyLDM2N3ogTTM3NS4yMDIsMzYxLjM1N2MtMjIuNTA3LDAtMjkuMTg0LTIxLjc4Ni0yOS4xODQtNDguNjVjMC0yNi44NzUsNi4zNjMtNDguNjUsMjkuMTg0LTQ4LjY1DQoJCWMyMy4yOCwwLDI5LjE3NCwyMS43NzYsMjkuMTc0LDQ4LjY1QzQwNC4zNzUsMzM5LjU3MSwzOTguNDgyLDM2MS4zNTcsMzc1LjIwMiwzNjEuMzU3eiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1MTgxQTI7IiBkPSJNNDkwLjA4OCwzNTkuNzY5Yy0yLjI4OCw1LjE4My00Ljc2NSwxMC4yNzEtNy4zODcsMTUuMjY2aC0zOS4zODJWMjUwLjM3OGgxOS43MTd2MTA5LjM5SDQ5MC4wODh6Ig0KCQkvPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=",
   "children": [
@@ -30,6 +36,12 @@
         "title_options": null,
         "options": null
       },
+      "pr": {
+        "title": "Conectar",
+        "description": "Configure a conexão MySQL, pode usar um identificador para alternar entre outras conexões.",
+        "title_options": null,
+        "options": null
+      },
       "form": {
         "css": "modal-md",
         "inputs": [
@@ -37,15 +49,18 @@
             "type": "input",
             "placeholder": {
               "es": "127.0.0.1",
-              "en": "127.0.0.1"
+              "en": "127.0.0.1",
+              "pr": "127.0.0.1"
             },
             "title": {
               "es": "Url de Servidor:",
-              "en": "Url Server:"
+              "en": "Url Server:",
+              "pr": "Url do servidor:"
             },
             "description": {
               "es": "Url de servidor, puede ser una IP o un dominio",
-              "en": "Server url, can be an IP or a domain"
+              "en": "Server url, can be an IP or a domain",
+              "pr": "Url do servidor, pode ser um IP ou um domínio"
             },
             "id": "host",
             "css": "col-md-6"
@@ -54,15 +69,18 @@
             "type": "input",
             "placeholder": {
               "es": "3306",
-              "en": "3306"
+              "en": "3306",
+              "pr": "3306"
             },
             "title": {
               "es": "Puerto:",
-              "en": "Port:"
+              "en": "Port:",
+              "pr": "Porta:"
             },
             "description": {
               "es": "Puerto de conexión, por defecto 3306",
-              "en": "Connection port, default 3306"
+              "en": "Connection port, default 3306",
+              "pr": "Porta de conexão, padrão 3306"
             },
             "id": "port",
             "css": "col-md-6"
@@ -71,15 +89,18 @@
             "type": "input",
             "placeholder": {
               "es": "database_name",
-              "en": "database_name"
+              "en": "database_name",
+              "pr": "database_name"
             },
             "title": {
               "es": "Base de datos:",
-              "en": "Database:"
+              "en": "Database:",
+              "pr": "Base de dados:"
             },
             "description": {
               "es": "Nombre de la base de datos",
-              "en": "Database name"
+              "en": "Database name",
+              "pr": "Nome da base de dados"
             },
             "id": "db",
             "css": "col-md-12"
@@ -88,15 +109,18 @@
             "type": "input",
             "placeholder": {
               "es": "Rocketbot",
-              "en": "Rocketbot"
+              "en": "Rocketbot",
+              "pr": "Rocketbot"
             },
             "title": {
               "es": "Usuario:",
-              "en": "User:"
+              "en": "User:",
+              "pr": "Usuário:"
             },
             "description": {
               "es": "Usuario de la base de datos",
-              "en": "Database user"
+              "en": "Database user",
+              "pr": "Usuário do base de dados"
             },
             "id": "user",
             "css": "col-md-6"
@@ -105,15 +129,18 @@
             "type": "input",
             "placeholder": {
               "es": "secr3t_p@ss",
-              "en": "secr3t_p@ss"
+              "en": "secr3t_p@ss",
+              "pr": "secr3t_p@ss"
             },
             "title": {
               "es": "Contraseña:",
-              "en": "Password:"
+              "en": "Password:",
+              "pr": "Senha:"
             },
             "description": {
               "es": "Contraseña del usuario",
-              "en": "User password"
+              "en": "User password",
+              "pr": "Senha do usuário"
             },
             "id": "pass",
             "css": "col-md-6"
@@ -122,15 +149,18 @@
             "type": "input",
             "placeholder": {
                 "es": "Conn1",
-                "en": "Conn1"
+                "en": "Conn1",
+                "pr": "Conn1"
             },
             "title": {
               "es": "Sesión:",
-              "en": "Session:"
+              "en": "Session:",
+              "pr": "Sessão:"
             },
             "description": {
               "es": "Identificador de la conexión, si se deja vacío se usará la conexión por defecto",
-              "en": "Connection identifier, if empty the default connection will be used"
+              "en": "Connection identifier, if empty the default connection will be used",
+              "pr": "Identificador de conexão, se vazio, a conexão padrão será usada"
             },
             "id": "session",
             "css": "col-md-6"
@@ -139,20 +169,25 @@
             "type": "input",
             "placeholder": {
               "es": "conectado",
-              "en": "connected"
+              "en": "connected",
+              "pr": "conectado"
             },
             "title": {
               "es": "Resultado",
-              "en": "Result"
+              "en": "Result",
+              "pr": "Resultado"
             },
             "help": {
               "en": "Variable where the result is stored without {}",
-              "es": "Variable donde se almacena el resultado sin {}"
+              "es": "Variable donde se almacena el resultado sin {}",
+              "pr": "Variável onde o resultado é armazenado sem {}"
             },
             "description": {
               "es": "Variable donde se almacena el resultado de la conexión",
-              "en": "Variable where the result of the connection is stored"
+              "en": "Variable where the result of the connection is stored",
+              "pr": "Variável onde o resultado da conexão é armazenado"
             },
+            "remove_vars": true,
             "id": "result",
             "css": "col-md-6"
           }
@@ -184,6 +219,12 @@
         "title_options": null,
         "options": null
       },
+      "pr": {
+        "title": "Consulta MySQL",
+        "description": "Realiza uma consulta MySQL (Select, insert, delete, etc)",
+        "title_options": null,
+        "options": null
+      },
       "form": {
         "css": "modal-lg",
         "inputs": [
@@ -191,15 +232,18 @@
             "type": "input",
             "placeholder": {
               "es": "select * from db",
-              "en": "select * form db"
+              "en": "select * from db",
+              "pr": "select * from db"
             },
             "title": {
               "es": "Consulta",
-              "en": "Query"
+              "en": "Query",
+              "pr": "Query"
             },
             "description": {
               "es": "Consulta a realizar",
-              "en": "Query to execute"
+              "en": "Query to execute",
+              "pr": "Query to execute"
             },
             "id": "query",
             "css": "col-md-12"
@@ -208,15 +252,18 @@
             "type": "input",
             "placeholder": {
                 "es": "Conn1",
-                "en": "Conn1"
+                "en": "Conn1",
+                "pr": "Conn1"
             },
             "title": {
               "es": "Sesión:",
-              "en": "Session:"
+              "en": "Session:",
+              "pr": "Sessão:"
             },
             "description": {
               "es": "Identificador de la conexión",
-              "en": "Connection identifier"
+              "en": "Connection identifier",
+              "pr": "Identificador de conexão"
             },
             "id": "session",
             "css": "col-md-6"
@@ -225,20 +272,25 @@
             "type": "input",
             "placeholder": {
               "es": "resultado",
-              "en": "result"
+              "en": "result",
+              "pr": "resultado"
             },
             "title": {
               "es": "Resultado",
-              "en": "Result"
+              "en": "Result",
+              "pr": "Resultado"
             },
             "help": {
               "en": "Variable where the result is stored without {}",
-              "es": "Variable donde se almacena el resultado sin {}"
+              "es": "Variable donde se almacena el resultado sin {}",
+              "pr": "Variável onde o resultado é armazenado sem {}"
             },
             "description": {
               "es": "Variable donde se almacena el resultado de la consulta",
-              "en": "Variable where the result of the query is stored"
+              "en": "Variable where the result of the query is stored",
+              "pr": "Variável onde o resultado da consulta é armazenado"
             },
+            "remove_vars": true,
             "id": "result",
             "css": "col-md-12"
           }
@@ -270,6 +322,12 @@
           "title_options": null,
           "options": null
         },
+        "pr": {
+          "title": "Obter a última linha inserida",
+          "description": "Executar uma consulta MySQL para obter a última linha inserida.",
+          "title_options": null,
+          "options": null
+        },
         "form": {
           "css": "modal-lg",
           "inputs": [
@@ -277,15 +335,18 @@
                 "type": "input",
                 "placeholder": {
                     "es": "Inventory",
-                    "en": "Inventory"
+                    "en": "Inventory",
+                    "pr": "Inventário"
                 },
                 "title": {
                   "es": "Tabla donde se inserto ultimo:",
-                  "en": "Table were the last insert happened:"
+                  "en": "Table were the last insert happened:",
+                  "pr": "Tabela onde a última inserção aconteceu:"
                 },
                 "description": {
                   "es": "Nombre de la tabla donde se inserto ultimo",
-                  "en": "Table name were the last insert happened"
+                  "en": "Table name were the last insert happened",
+                  "pr": "Nome da tabela onde a última inserção aconteceu"
                 },
                 "id": "table",
                 "css": "col-md-6"
@@ -294,15 +355,18 @@
                 "type": "input",
                 "placeholder": {
                     "es": "id",
-                    "en": "id"
+                    "en": "id",
+                    "pr": "id"
                 },
                 "title": {
                   "es": "Primary Key:",
-                  "en": "Primary Key:"
+                  "en": "Primary Key:",
+                  "pr": "Chave Primária:"
                 },
                 "description": {
                   "es": "Nombre de la columna que es primary key",
-                  "en": "Column name that is primary key"
+                  "en": "Column name that is primary key",
+                  "pr": "Nome da coluna que é chave primária"
                 },
                 "id": "primaryKey",
                 "css": "col-md-6"
@@ -311,15 +375,18 @@
             "type": "input",
             "placeholder": {
                 "es": "Conn1",
-                "en": "Conn1"
+                "en": "Conn1",
+                "pr": "Conn1"
             },
             "title": {
               "es": "Sesión:",
-              "en": "Session:"
+              "en": "Session:",
+              "pr": "Sessão:"
             },
             "description": {
               "es": "Identificador de la conexión",
-              "en": "Connection identifier"
+              "en": "Connection identifier",
+              "pr": "Identificador de conexão"
             },
             "id": "session",
             "css": "col-md-6"
@@ -328,20 +395,25 @@
               "type": "input",
               "placeholder": {
                 "es": "resultado",
-                "en": "result"
+                "en": "result",
+                "pr": "resultado"
               },
               "title": {
                 "es": "Resultado",
-                "en": "Result"
+                "en": "Result",
+                "pr": "Resultado"
               },
               "help": {
                 "en": "Variable where the result is stored without {}",
-                "es": "Variable donde se almacena el resultado sin {}"
+                "es": "Variable donde se almacena el resultado sin {}",
+                "pr": "Variável onde o resultado é armazenado sem {}"
               },
               "description": {
                 "es": "Variable donde se almacena el resultado de la consulta",
-                "en": "Variable where the result is stored"
+                "en": "Variable where the result is stored",
+                "pr": "Variável onde o resultado é armazenado"
               },
+              "remove_vars": true,
               "id": "result",
               "css": "col-md-6"
             }
@@ -373,6 +445,12 @@
         "title_options": null,
         "options": null
       },
+      "pr": {
+        "title": "Fechar conexão",
+        "description": "Fecha uma conexão de oracle por sessão",
+        "title_options": null,
+        "options": null
+      },
       "form": {
         "css": "modal-md",
         "inputs": [
@@ -380,15 +458,18 @@
             "type": "input",
             "placeholder": {
                 "es": "Conn1",
-                "en": "Conn1"
+                "en": "Conn1",
+                "pr": "Conn1"
             },
             "title": {
               "es": "Sesión:",
-              "en": "Session:"
+              "en": "Session:",
+              "pr": "Sessão:"
             },
             "description": {
               "es": "Identificador de la conexión",
-              "en": "Connection identifier"
+              "en": "Connection identifier",
+              "pr": "Identificador da conexão"
             },
             "id": "session",
             "css": "col-md-6"
