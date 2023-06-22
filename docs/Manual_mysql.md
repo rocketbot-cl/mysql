@@ -1,14 +1,15 @@
 # MySQL
   
-Module for working with MySQL database. Use only if the native version of the command does not work  
+Module to work with MySQL database. Use only if the native version of the command does not work  
 
-*Read this in other languages: [English](Manual_mysql.md), [Español](Manual_mysql.es.md).*
+*Read this in other languages: [English](Manual_mysql.md), [Português](Manual_mysql.pr.md), [Español](Manual_mysql.es.md)*
   
 ![banner](imgs/Banner_mysql.png)
 ## How to install this module
   
-__Download__ and __install__ the content in 'modules' folder in Rocketbot path  
-
+To install the module in Rocketbot Studio, it can be done in two ways:
+1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
+2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
 
 
 ## Description of the commands
@@ -31,7 +32,7 @@ Configure MySQL connection to server, can use identifier for change between othe
 Create MySQL query (Select, insert, delete, etc)
 |Parameters|Description|example|
 | --- | --- | --- |
-|Query|Query to execute|select * form db|
+|Query|Query to execute|select * from db|
 |Session|Connection identifier|Conn1|
 |Result|Variable where the result of the query is stored|result|
 

@@ -25,6 +25,7 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 """
 import pymysql
 import datetime
+from decimal import Decimal
 global mysql_module
 
 # Globals declared here
@@ -97,6 +98,8 @@ if module =="query":
                 for d in r:
                     if isinstance(r[d], datetime.date):
                         r[d] = r[d].strftime("%d-%m-%Y %H:%M:%S")
+                    if isinstance(r[d], Decimal):
+                        r[d] = float(r[d])
             data = data_
         else:
             conn.commit()
