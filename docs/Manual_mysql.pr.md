@@ -1,10 +1,14 @@
+
+
+
+
 # MySQL
   
 Módulo para trabalhar com banco de dados MySQL. Use apenas se a versão nativa do comando não funcionar  
 
 *Read this in other languages: [English](Manual_mysql.md), [Português](Manual_mysql.pr.md), [Español](Manual_mysql.es.md)*
   
-![banner](imgs/Banner_mysql.png o jpg)
+![banner](imgs/Banner_mysql.png)
 ## Como instalar este módulo
   
 Para instalar o módulo no Rocketbot Studio, pode ser feito de duas formas:
@@ -35,6 +39,31 @@ Realiza uma consulta MySQL (Select, insert, delete, etc)
 |Query|Query to execute|select * from db|
 |Sessão|Identificador de conexão|Conn1|
 |Resultado|Variável onde o resultado da consulta é armazenado|resultado|
+
+### Executa Múltiplas Atualizações
+  
+Realiza múltiplas atualizações em uma execução
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Sessão|Identificador de conexão|Conn1|
+|Resultado|Variável onde o resultado da consulta é armazenado|resultado|
+|Update a realizar|Update a realizar|UPDATE city SET name = %s, capital = %s WHERE ID = %s|
+|Lista de valores a atribuir nas colunas em ordem|Lista de valores a atribuir nas colunas|[['Chile', 'Argentina', 'Venezuela'], ['Santiago', 'Buenos Aires', 'Caracas']]|
+|Lista de cláusulas|Cláusula|[1, 2, 3]|
+|Só tem uma coluna|Se esta caixa estiver marcada, significa que só tem uma coluna para atualizar.|True|
+
+### Importar dados
+  
+Importar dados para um banco de dados MySQL
+|Parâmetros|Descrição|exemplo|
+| --- | --- | --- |
+|Sessão|Nome da sessão de conexão|Conn1|
+|Nome da folha|Nome da planilha para importar|Folha1|
+|Esquema da tabela|Esquema da tabela para importar.|schema|
+|Nome da tabela a importar|Nome da tabela SQL onde os dados serão importados. Se não existir, será criado.|Tabela|
+|Caminho do arquivo base|Caminho do arquivo base para importar|Caminho|
+|Tamanho do batch|As linhas serão gravadas em lotes desse tamanho por vez. Por padrão, todas as linhas serão gravadas de uma só vez.|2000|
+|Método|||
 
 ### Obter a última linha inserida
   

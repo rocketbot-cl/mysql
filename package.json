@@ -7,7 +7,7 @@
     "pr": "Módulo para trabalhar com banco de dados MySQL. Use apenas se a versão nativa do comando não funcionar"
   },
   "disclaimer": "THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM “AS IS” WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM IS WITH YOU. SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY SERVICING, REPAIR OR CORRECTION.",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "license": "MIT",
   "homepage": "http://rocketbot.com",
   "linux": true,
@@ -307,6 +307,382 @@
       "linux": true,
       "windows": true,
       "mac": true,
+      "docker": true
+    },
+    {
+      "en": {
+        "title": "Executes Multiple Updates",
+        "description": "Executes multiple updates at once",
+        "title_options": null,
+        "options": null
+      },
+      "es": {
+        "title": "Ejecuta Multiples Updates",
+        "description": "Realiza Multiples Updates en una ejecución",
+        "title_options": null,
+        "options": null
+      },
+      "pr": {
+        "title": "Executa Múltiplas Atualizações",
+        "description": "Realiza múltiplas atualizações em uma execução",
+        "title_options": null,
+        "options": null
+      },
+      "form": {
+        "css": "modal-lg",
+        "inputs": [
+          {
+            "type": "input",
+            "placeholder": {
+                "es": "Conn1",
+                "en": "Conn1",
+                "pr": "Conn1"
+            },
+            "title": {
+              "es": "Sesión:",
+              "en": "Session:",
+              "pr": "Sessão:"
+            },
+            "description": {
+              "es": "Identificador de la conexión",
+              "en": "Connection identifier",
+              "pr": "Identificador de conexão"
+            },
+            "id": "session",
+            "css": "col-md-6"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "resultado",
+              "en": "result",
+              "pr": "resultado"
+            },
+            "title": {
+              "es": "Resultado",
+              "en": "Result",
+              "pr": "Resultado"
+            },
+            "help": {
+              "en": "Variable where the result is stored without {}",
+              "es": "Variable donde se almacena el resultado sin {}",
+              "pr": "Variável onde o resultado é armazenado sem {}"
+            },
+            "description": {
+              "es": "Variable donde se almacena el resultado de la consulta",
+              "en": "Variable where the result of the query is stored",
+              "pr": "Variável onde o resultado da consulta é armazenado"
+            },
+            "remove_vars": true,
+            "id": "result1",
+            "css": "col-md-6"
+          },  
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "UPDATE city SET name = %s, capital = %s WHERE ID = %s",
+              "en": "UPDATE city SET name = %s, capital = %s WHERE ID = %s",
+              "pr": "UPDATE city SET name = %s, capital = %s WHERE ID = %s"
+            },
+            "title": {
+              "es": "Update a realizar",
+              "en": "Update to be performed",
+              "pr": "Update a realizar"
+            },
+            "help": {
+              "en": "The position identifier %s must be inserted where a list is assigned",
+              "es": "Debe colocar el identificador de posición %s donde corresponda asignar una lista",
+              "pr": "Você deve colocar o identificador de posição %s onde deve ser atribuída uma lista"
+            },
+            "description": {
+              "es": "Update a realizar",
+              "en": "Update to be performed",
+              "pr": "Update a realizar"
+            },
+            "id": "table",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "[['Chile', 'Argentina', 'Venezuela'], ['Santiago', 'Buenos Aires', 'Caracas']]",
+              "en": "[['Chile', 'Argentina', 'Venezuela'], ['Santiago', 'Buenos Aires', 'Caracas']]",
+              "pr": "[['Chile', 'Argentina', 'Venezuela'], ['Santiago', 'Buenos Aires', 'Caracas']]"
+            },
+            "title": {
+              "es": "Lista de valores a asignar en las columnas en orden",
+              "en": "List of values to assign in the columns in order",
+              "pr": "Lista de valores a atribuir nas colunas em ordem"
+            },
+            "help": {
+              "en": "You must assign a list of lists if you have more than one column in the query",
+              "es": "Debe asignar una lista de listas si tiene mas de una columna en la query",
+              "pr": "Deve atribuir uma lista de listas se tiver mais de uma coluna na query"
+            },
+            "description": {
+              "es": "Lista de valores a asignar en las columnas",
+              "en": "List of values to assign in the columns",
+              "pr": "Lista de valores a atribuir nas colunas"
+            },
+            "id": "list1",
+            "css": "col-md-12"
+          },
+          {
+            "type": "input",
+            "placeholder": {
+              "es": "[1, 2, 3]",
+              "en": "[1, 2, 3]",
+              "pr": "[1, 2, 3]"
+            },
+            "title": {
+              "es": "Lista de cláusulas",
+              "en": "List of clauses",
+              "pr": "Lista de cláusulas"
+            },
+            "description": {
+              "es": "Cláusula",
+              "en": "Clause",
+              "pr": "Cláusula"
+            },
+            "id": "list2",
+            "css": "col-md-12"
+          },
+          {
+            "type": "checkbox",
+            "placeholder": {
+              "es": "True",
+              "en": "True",
+              "pr": "True"
+            },
+            "description": {
+              "es": "Si se marca esta casilla, indica que solo hay una columna para updatear",
+              "en": "If this box is checked, means there's only one column to update",
+              "pr": "Se esta caixa estiver marcada, significa que só tem uma coluna para atualizar."
+            },
+            "title": {
+              "es": "Solo hay una columna",
+              "en": "There is only one column",
+              "pr": "Só tem uma coluna"
+            },
+            "id": "onetable",
+            "css": "col-md-12"
+          }
+        ]
+      },
+      "video_youtube": "",
+      "icon": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggc3R5bGU9ImZpbGw6I0YyRjJGMjsiIGQ9Ik01MTIsMjU2YzAsMzYuOTM3LTcuODI2LDcyLjA1Ni0yMS45MTEsMTAzLjc2OWMtMi4yODgsNS4xODMtNC43NjUsMTAuMjcxLTcuMzg3LDE1LjI2Ng0KCUM0MzkuODUsNDU2LjQ3NCwzNTQuNDA4LDUxMiwyNTYsNTEyYy0xMDMuNjg1LDAtMTkyLjk3Mi02MS42MzktMjMzLjIyMS0xNTAuMjc3Yy03LjAyMi0xNS40NjQtMTIuNTQ5LTMxLjc0NC0xNi4zOTQtNDguNjYxDQoJQzIuMjA1LDI5NC43MTMsMCwyNzUuNjEzLDAsMjU2QzAsMTE0LjYxNSwxMTQuNjE1LDAsMjU2LDBjMTE1LjAxMiwwLDIxMi4zMDIsNzUuODM5LDI0NC42MTEsMTgwLjI0NQ0KCWMxLjAyNCwzLjMyMywxLjk4NSw2LjY4NywyLjg4NCwxMC4wNzN2MC4wMWMxLjY3Miw2LjMzMiwzLjExNCwxMi43MzcsNC4zMDUsMTkuMjQ3YzAuNTU0LDMuMDMsMS4wNTUsNi4wNzEsMS40OTQsOS4xMzINCgljMC4zMDMsMi4wNDgsMC41ODUsNC4wOTYsMC44MjUsNi4xNjVjMC40NiwzLjY5OSwwLjgyNSw3LjQyOSwxLjExOCwxMS4xOEM1MTEuNzM5LDI0Mi42MzYsNTEyLDI0OS4yOTIsNTEyLDI1NnoiLz4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1MTgxQTI7IiBkPSJNMzY3Ljk2MSw3Ny42MTRjMCwwLDcuNDIsNy42MzIsOC42OTEsMTMuMzU1YzAsMCw1LjMtNC4wMjgsMS42OTYtMTAuMzg3DQoJCUMzNzQuNzQ0LDc0LjIyMiwzNjcuOTYxLDc3LjYxNCwzNjcuOTYxLDc3LjYxNHoiLz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojNTE4MUEyOyIgZD0iTTUwMy40OTUsMTkwLjMxOGMtNi42NjYtMy4zNTQtMTIuNzI3LTUuMzM5LTE3LjQ3MS02LjUxYy02LjQxNi0xLjU4OC0xMS42MDktNi4zMTEtMTMuODU1LTEyLjUyOA0KCQljLTIuODg0LTcuOTczLTguMjU1LTIwLjg4OC0xOC4xMzktNDAuNDU4Yy0xOS41MDgtMzguNTc4LTQxLjEyNy01MC40NDgtNTUuMzI3LTYwLjQxNmMtOS4zMi02LjU0MS0yMS41NjctNy44NjgtMjguODgxLTguMDE0DQoJCWMtMy42ODgtMC4wNzMtNy4yNDEtMS40MjEtMTAuMDczLTMuNzkzYy03LjQ1LTYuMjY5LTIyLjEtMTMuNjM2LTI2Ljc2LTEwLjg3N2MtNS43MjYsMy4zOTYsMCwxMS4yNDMsOC4wNDYsMjEuMjAxDQoJCWM4LjA1Niw5Ljk2OCw5Ljc1OSwyMC45OTIsMTUuNDc1LDM1LjgzYzIuNjQ0LDYuODQ0LDUuODMxLDEwLjk4Miw4LjQ4NSwxMy40NDhjMi43NzksMi41OTEsMy42ODgsNi42MTQsMi4yMTUsMTAuMTA0DQoJCWMtNS4zNzEsMTIuNjk2LTcuMTY4LDI4Ljc3Ni00LjEyNyw0My42NDVjMy42MDUsMTcuNTk2LDExLjg3LDE3LjM4NywxMS44NywxNy4zODdjLTAuODQ2LTIzLjUzMSwxMS40NTItMzMuNzA4LDExLjQ1Mi0zMy43MDgNCgkJYzExLjIzMywzNC4zMzUsMzYuODg1LDU5Ljk4OCwzNi44ODUsNTkuOTg4Yy0yMC43NzMtNy40MTktMzYuMjQ3LTQxLjMzNi0zNi4yNDctNDEuMzM2cy0xLjY5MywxLjY5My0zLjE3NywxMi45MzYNCgkJYy0xLjQ4NCwxMS4yMzMtMTUuMDU3LDE4LjAxNC0yNS4wMTUtNi41NzJjLTkuOTY4LTI0LjU5NywyLjk2Ny01NS41NDcsMi45NjctNTUuNTQ3Yy01LjcyNi0yLjk2OC0xNy41OTYtMzAuMzEyLTE3LjU5Ni0zNC41NTUNCgkJYzAtNC4yMzItNC42NzEtMTMuNTYzLTEwLjM4Ni0xOS4yODljLTUuNzI2LTUuNzE2LTE2Ljk1OS0yMi4yNTYtMy44MTQtMjkuODg0YzEzLjEzNC03LjYzOCwzOS4yMTUsMTIuOTI1LDM5LjIxNSwxMi45MjUNCgkJYzQxLjEyNy0xLjQ4NCw4My41MTksNDguNTQ2LDkwLjMsNjYuMzUxYzYuNzgxLDE3LjgwNSwyNS44NjEsNTMuNDI2LDI1Ljg2MSw1My40MjZjNS40MTMsMS42NDEsMTAuNTAxLDMuNzYyLDE1LjIxNCw2LjE3NQ0KCQlDNTAxLjYzNSwxODMuNTY4LDUwMi41OTYsMTg2LjkzMiw1MDMuNDk1LDE5MC4zMTh6Ii8+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzUxODFBMjsiIGQ9Ik01MTEuMjM3LDIzNi4wNTNjLTAuMjA5LTAuMDk0LTAuNDA4LTAuMTk5LTAuNjA2LTAuMjkzYy0xMy4xNDUtNi4zNjMtMTguNDQyLTE5LjcxNy0xOC40NDItMTkuNzE3DQoJCWMzLjQwNi0zLjQwNiw5LjQ0Ni01LjM2LDE1LjYxMS02LjQ2OGMwLjU1NCwzLjAzLDEuMDU1LDYuMDcxLDEuNDk0LDkuMTMyYy0yLjI5OSwwLjQ0OS0zLjc1MSwwLjcyMS0zLjc1MSwwLjcyMQ0KCQljMCwxLjI5NiwxLjgwOCwzLjIyOSw0LjU3Nyw1LjQ0NEM1MTAuNTc5LDIyOC41NzEsNTEwLjk0NSwyMzIuMzAyLDUxMS4yMzcsMjM2LjA1M3oiLz4NCjwvZz4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRkE2MDA7IiBkPSJNMTMzLjM3MSwzNzQuNjU5SDExMy4zNGMwLDAsMC00NS43NzctNi42NzctMTAwLjE1M0w3NS4xOCwzNzQuNjU5SDU4Ljk2NGwtMzEuOTUzLTk5LjY3Mw0KCQljMCwwLTMuNzIsMjkuMjg4LTQuMjMyLDg2LjczN2MtNy4wMjItMTUuNDY0LTEyLjU0OS0zMS43NDQtMTYuMzk0LTQ4LjY2MWMxLjQ3My0yMS4yNjQsMy41NDItNDQuNDQsNi4zMjItNjMuMzUyaDI2LjA3DQoJCWwyOS43MjcsOTIuNTI2bDMxLjQ4My05Mi41MjZoMjMuODQ1QzEyMy44MzEsMjQ5LjcxLDEzMy4zNzEsMzMxLjI2NCwxMzMuMzcxLDM3NC42NTl6Ii8+DQoJPHBhdGggc3R5bGU9ImZpbGw6I0ZGQTYwMDsiIGQ9Ik0xNDQuNDIzLDI4My40NTJsMjAuNjY4LTAuMzE4YzAsMCwyMy4yMTIsNjkuNjM3LDIwLjk4Nyw3OC4yMjJjMCwwLDE0Ljk0NS00MS42NTUsMTguNzYxLTc4LjIyMg0KCQloMjAuMzVjMCwwLTEwLjgxMiw3My43NzEtNDMuODgsMTEyLjU2NGMtMTIuMzc1LDE0LjUxNy0yNi4yNjIsMTQuNjk1LTM4Ljc5OSw5LjIzNnYtMTEuMTQzYzAsMCwxNy4xNzcsNi4wNDIsMjYuMDgxLTYuNjc4DQoJCWM3LjE2OC0xMC4yNCwwLjMyMi0yNy44OTgtNS45MzgtNDYuNjcxQzE2MS4xMzUsMzM1Ljg5NiwxNDQuNDIzLDI4My40NTIsMTQ0LjQyMywyODMuNDUyeiIvPg0KPC9nPg0KPGc+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzUxODFBMjsiIGQ9Ik0yMzcuOTA4LDM2NS40OTFsNS40MDUtMTAuODEyYzAsMCwzNy4yMDQsMTYuNTM0LDQ2Ljc0MiwwYzkuNTM5LTE2LjUzNCwwLjMxOC0yNS40MzgtMTguNDQyLTM1LjI5Ng0KCQljLTE4Ljc2LTkuODU4LTM4LjQ3NS0yMi4yNTgtMjkuODktNDkuMjg3YzguNTg2LTI3LjAyOCw1NC4wNTYtMjUuMTIsNjcuMDkzLTEyLjA4M2wtNC40NTEsMTAuNDkzYzAsMC0zMy43MDUtMTQuMzA5LTQyLjkyNiw0LjQ1MQ0KCQljLTkuMjIxLDE4Ljc2LDE1LjI2MywyNy42NjQsMjAuOTg3LDMwLjIwOGM1LjcyNCwyLjU0NCwzNy41MjEsMTUuNTgsMzQuMDI0LDM4Ljc5M3MtMTcuODA3LDM3LjUyMS01MC41NTgsMzQuNjU5DQoJCUMyNTQuMTI0LDM3My43NTgsMjQ3LjQ0NywzNzEuODUsMjM3LjkwOCwzNjUuNDkxeiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1MTgxQTI7IiBkPSJNNDA1LjQ1MiwzNjdjMTQuMDU0LTExLjI5NSwyMC4wODMtMzEuMzg5LDIwLjA4My01NC4yOTNjMC0zNS4zMjgtMTAuMTY3LTYzLjk2OS01MC4zMzMtNjMuOTY5DQoJCWMtMzQuNTg2LDAtNTAuMzMzLDI4LjY0MS01MC4zMzMsNjMuOTY5czExLjUxNSw2My45NjksNTAuMzMzLDYzLjk2OWM1LjYyMiwwLDEwLjcyMS0wLjcsMTUuMzE4LTIuMDE3bDI5LjkwNSwxNy41NDRsNy4zMTQtMTQuMzE1DQoJCUw0MDUuNDUyLDM2N3ogTTM3NS4yMDIsMzYxLjM1N2MtMjIuNTA3LDAtMjkuMTg0LTIxLjc4Ni0yOS4xODQtNDguNjVjMC0yNi44NzUsNi4zNjMtNDguNjUsMjkuMTg0LTQ4LjY1DQoJCWMyMy4yOCwwLDI5LjE3NCwyMS43NzYsMjkuMTc0LDQ4LjY1QzQwNC4zNzUsMzM5LjU3MSwzOTguNDgyLDM2MS4zNTcsMzc1LjIwMiwzNjEuMzU3eiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1MTgxQTI7IiBkPSJNNDkwLjA4OCwzNTkuNzY5Yy0yLjI4OCw1LjE4My00Ljc2NSwxMC4yNzEtNy4zODcsMTUuMjY2aC0zOS4zODJWMjUwLjM3OGgxOS43MTd2MTA5LjM5SDQ5MC4wODh6Ig0KCQkvPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=",
+      "module": "manyUpdates",
+      "module_name": "mysql",
+      "visible": true,
+      "options": false,
+      "father": "module",
+      "group": "scripts",
+      "linux": true,
+      "windows": true,
+      "mac": true,
+      "docker": true
+    },
+    {
+      "en": {
+          "title": "Import data",
+          "description": "Import data to a MySQL database",
+          "title_options": "Select Option",
+          "options": null
+      },
+      "es": {
+          "title": "Importar datos",
+          "description": "Importar datos a una base de datos MySQL",
+          "title_options": "Seleccione una opción",
+          "options": null
+      },
+      "pr": {
+          "title": "Importar dados",
+          "description": "Importar dados para um banco de dados MySQL",
+          "title_options": "Selecione uma opção",
+          "options": null
+      },
+      "form": {
+          "css": "modal-lg",
+          "inputs": [
+              {
+                  "type": "input",
+                  "placeholder": {
+                      "es": "Conn1",
+                      "en": "Conn1",
+                      "pr": "Conn1"
+                  },
+                  "title": {
+                      "es": "Sesión:",
+                      "en": "Session:",
+                      "pr": "Sessão"
+                  },
+                  "description": {
+                      "es": "Nombre de la sesión de conexión",
+                      "en": "Connection session name",
+                      "pr": "Nome da sessão de conexão"
+                  },
+                  "id": "session",
+                  "css": "col-md-3",
+                  "data_type": "str",
+                  "default": null,
+                  "required": false
+              },
+              {
+                  "type": "input",
+                  "placeholder": {
+                      "es": "Hoja1",
+                      "en": "Sheet1",
+                      "pr": "Folha1"
+                  },
+                  "title": {
+                      "es": "Nombre de hoja",
+                      "en": "Sheet name",
+                      "pr": "Nome da folha"
+                  },
+                  "description": {
+                      "es": "Nombre de la hoja de cálculo a importar",
+                      "en": "Name of the spreadsheet to import",
+                      "pr": "Nome da planilha para importar"
+                  },
+                  "id": "hoja",
+                  "css": "col-md-3",
+                  "data_type": "str",
+                  "default": null,
+                  "required": true
+              },
+              {
+                  "type": "input",
+                  "placeholder": {
+                      "es": "Esquema",
+                      "en": "schema",
+                      "pr": "schema"
+                  },
+                  "title": {
+                      "es": "Schema de la tabla",
+                      "en": "Table schema",
+                      "pr": "Esquema da tabela"
+                  },
+                  "description": {
+                      "es": "Esquema de la tabla a importar.",
+                      "en": "Schema of the table to import.",
+                      "pr": "Esquema da tabela para importar."
+                  },
+                  "id": "schema",
+                  "css": "col-md-3",
+                  "data_type": "str",
+                  "default": null,
+                  "required": false
+              },
+              {
+                  "type": "input",
+                  "placeholder": {
+                      "es": "Tabla",
+                      "en": "Table",
+                      "pr": "Tabela"
+                  },
+                  "title": {
+                      "es": "Nombre de la tabla a importar",
+                      "en": "Name of the table to import",
+                      "pr": "Nome da tabela a importar"
+                  },
+                  "description": {
+                      "es": "Nombre de la tabla SQL donde se importarán los datos. Si no existe, se creará.",
+                      "en": "Name of the SQL table where the data will be imported. If it does not exist, it will be created.",
+                      "pr": "Nome da tabela SQL onde os dados serão importados. Se não existir, será criado."
+                  },
+                  "id": "tabla",
+                  "css": "col-md-3",
+                  "data_type": "str",
+                  "default": null,
+                  "required": true
+              },
+              {
+                  "type": "file_select",
+                  "placeholder": {
+                      "es": "Ruta",
+                      "en": "Path",
+                      "pr": "Caminho"
+                  },
+                  "title": {
+                      "es": "Ruta del archivo base",
+                      "en": "Base file path",
+                      "pr": "Caminho do arquivo base"
+                  },
+                  "description": {
+                      "es": "Ruta del archivo base a importar",
+                      "en": "Base file path to import",
+                      "pr": "Caminho do arquivo base para importar"
+                  },
+                  "id": "path_file",
+                  "css": "col-md-12",
+                  "data_type": "str",
+                  "default": null,
+                  "required": true
+              },
+              {
+                  "type": "input",
+                  "placeholder": {
+                      "es": "2000",
+                      "en": "2000",
+                      "pr": "2000"
+                  },
+                  "title": {
+                      "es": "Tamaño del lote",
+                      "en": "Batch size",
+                      "pr": "Tamanho do batch"
+                  },
+                  "description": {
+                      "es": "Las filas se escribirán en lotes de este tamaño a la vez. Por defecto, todas las filas se escribirán a la vez.",
+                      "en": "Rows will be written in batches of this size at a time. By default, all rows will be written at once.",
+                      "pr": "As linhas serão gravadas em lotes desse tamanho por vez. Por padrão, todas as linhas serão gravadas de uma só vez."
+                  },
+                  "id": "chunk",
+                  "css": "col-md-6",
+                  "data_type": "str",
+                  "default": null,
+                  "required": false
+              },
+              {
+                  "type": "select",
+                  "title": {
+                      "es": "Metodo",
+                      "en": "Method",
+                      "pr": "Método"
+                  },
+                  "options": [
+                      {
+                          "title": "--Seleccione--",
+                          "value": ""
+                      },
+                      {
+                          "title": "One INSERT per row",
+                          "value": "None"
+                      },
+                      {
+                          "title": "Multiple rows per INSERT",
+                          "value": "multi"
+                      }
+                  ],
+                  "id": "method",
+                  "css": "col-md-6",
+                  "data_type": "str",
+                  "default": null,
+                  "required": false
+              }
+
+          ]
+      },
+      "video_youtube": "",
+      "icon": "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPHBhdGggc3R5bGU9ImZpbGw6I0YyRjJGMjsiIGQ9Ik01MTIsMjU2YzAsMzYuOTM3LTcuODI2LDcyLjA1Ni0yMS45MTEsMTAzLjc2OWMtMi4yODgsNS4xODMtNC43NjUsMTAuMjcxLTcuMzg3LDE1LjI2Ng0KCUM0MzkuODUsNDU2LjQ3NCwzNTQuNDA4LDUxMiwyNTYsNTEyYy0xMDMuNjg1LDAtMTkyLjk3Mi02MS42MzktMjMzLjIyMS0xNTAuMjc3Yy03LjAyMi0xNS40NjQtMTIuNTQ5LTMxLjc0NC0xNi4zOTQtNDguNjYxDQoJQzIuMjA1LDI5NC43MTMsMCwyNzUuNjEzLDAsMjU2QzAsMTE0LjYxNSwxMTQuNjE1LDAsMjU2LDBjMTE1LjAxMiwwLDIxMi4zMDIsNzUuODM5LDI0NC42MTEsMTgwLjI0NQ0KCWMxLjAyNCwzLjMyMywxLjk4NSw2LjY4NywyLjg4NCwxMC4wNzN2MC4wMWMxLjY3Miw2LjMzMiwzLjExNCwxMi43MzcsNC4zMDUsMTkuMjQ3YzAuNTU0LDMuMDMsMS4wNTUsNi4wNzEsMS40OTQsOS4xMzINCgljMC4zMDMsMi4wNDgsMC41ODUsNC4wOTYsMC44MjUsNi4xNjVjMC40NiwzLjY5OSwwLjgyNSw3LjQyOSwxLjExOCwxMS4xOEM1MTEuNzM5LDI0Mi42MzYsNTEyLDI0OS4yOTIsNTEyLDI1NnoiLz4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1MTgxQTI7IiBkPSJNMzY3Ljk2MSw3Ny42MTRjMCwwLDcuNDIsNy42MzIsOC42OTEsMTMuMzU1YzAsMCw1LjMtNC4wMjgsMS42OTYtMTAuMzg3DQoJCUMzNzQuNzQ0LDc0LjIyMiwzNjcuOTYxLDc3LjYxNCwzNjcuOTYxLDc3LjYxNHoiLz4NCgk8cGF0aCBzdHlsZT0iZmlsbDojNTE4MUEyOyIgZD0iTTUwMy40OTUsMTkwLjMxOGMtNi42NjYtMy4zNTQtMTIuNzI3LTUuMzM5LTE3LjQ3MS02LjUxYy02LjQxNi0xLjU4OC0xMS42MDktNi4zMTEtMTMuODU1LTEyLjUyOA0KCQljLTIuODg0LTcuOTczLTguMjU1LTIwLjg4OC0xOC4xMzktNDAuNDU4Yy0xOS41MDgtMzguNTc4LTQxLjEyNy01MC40NDgtNTUuMzI3LTYwLjQxNmMtOS4zMi02LjU0MS0yMS41NjctNy44NjgtMjguODgxLTguMDE0DQoJCWMtMy42ODgtMC4wNzMtNy4yNDEtMS40MjEtMTAuMDczLTMuNzkzYy03LjQ1LTYuMjY5LTIyLjEtMTMuNjM2LTI2Ljc2LTEwLjg3N2MtNS43MjYsMy4zOTYsMCwxMS4yNDMsOC4wNDYsMjEuMjAxDQoJCWM4LjA1Niw5Ljk2OCw5Ljc1OSwyMC45OTIsMTUuNDc1LDM1LjgzYzIuNjQ0LDYuODQ0LDUuODMxLDEwLjk4Miw4LjQ4NSwxMy40NDhjMi43NzksMi41OTEsMy42ODgsNi42MTQsMi4yMTUsMTAuMTA0DQoJCWMtNS4zNzEsMTIuNjk2LTcuMTY4LDI4Ljc3Ni00LjEyNyw0My42NDVjMy42MDUsMTcuNTk2LDExLjg3LDE3LjM4NywxMS44NywxNy4zODdjLTAuODQ2LTIzLjUzMSwxMS40NTItMzMuNzA4LDExLjQ1Mi0zMy43MDgNCgkJYzExLjIzMywzNC4zMzUsMzYuODg1LDU5Ljk4OCwzNi44ODUsNTkuOTg4Yy0yMC43NzMtNy40MTktMzYuMjQ3LTQxLjMzNi0zNi4yNDctNDEuMzM2cy0xLjY5MywxLjY5My0zLjE3NywxMi45MzYNCgkJYy0xLjQ4NCwxMS4yMzMtMTUuMDU3LDE4LjAxNC0yNS4wMTUtNi41NzJjLTkuOTY4LTI0LjU5NywyLjk2Ny01NS41NDcsMi45NjctNTUuNTQ3Yy01LjcyNi0yLjk2OC0xNy41OTYtMzAuMzEyLTE3LjU5Ni0zNC41NTUNCgkJYzAtNC4yMzItNC42NzEtMTMuNTYzLTEwLjM4Ni0xOS4yODljLTUuNzI2LTUuNzE2LTE2Ljk1OS0yMi4yNTYtMy44MTQtMjkuODg0YzEzLjEzNC03LjYzOCwzOS4yMTUsMTIuOTI1LDM5LjIxNSwxMi45MjUNCgkJYzQxLjEyNy0xLjQ4NCw4My41MTksNDguNTQ2LDkwLjMsNjYuMzUxYzYuNzgxLDE3LjgwNSwyNS44NjEsNTMuNDI2LDI1Ljg2MSw1My40MjZjNS40MTMsMS42NDEsMTAuNTAxLDMuNzYyLDE1LjIxNCw2LjE3NQ0KCQlDNTAxLjYzNSwxODMuNTY4LDUwMi41OTYsMTg2LjkzMiw1MDMuNDk1LDE5MC4zMTh6Ii8+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzUxODFBMjsiIGQ9Ik01MTEuMjM3LDIzNi4wNTNjLTAuMjA5LTAuMDk0LTAuNDA4LTAuMTk5LTAuNjA2LTAuMjkzYy0xMy4xNDUtNi4zNjMtMTguNDQyLTE5LjcxNy0xOC40NDItMTkuNzE3DQoJCWMzLjQwNi0zLjQwNiw5LjQ0Ni01LjM2LDE1LjYxMS02LjQ2OGMwLjU1NCwzLjAzLDEuMDU1LDYuMDcxLDEuNDk0LDkuMTMyYy0yLjI5OSwwLjQ0OS0zLjc1MSwwLjcyMS0zLjc1MSwwLjcyMQ0KCQljMCwxLjI5NiwxLjgwOCwzLjIyOSw0LjU3Nyw1LjQ0NEM1MTAuNTc5LDIyOC41NzEsNTEwLjk0NSwyMzIuMzAyLDUxMS4yMzcsMjM2LjA1M3oiLz4NCjwvZz4NCjxnPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiNGRkE2MDA7IiBkPSJNMTMzLjM3MSwzNzQuNjU5SDExMy4zNGMwLDAsMC00NS43NzctNi42NzctMTAwLjE1M0w3NS4xOCwzNzQuNjU5SDU4Ljk2NGwtMzEuOTUzLTk5LjY3Mw0KCQljMCwwLTMuNzIsMjkuMjg4LTQuMjMyLDg2LjczN2MtNy4wMjItMTUuNDY0LTEyLjU0OS0zMS43NDQtMTYuMzk0LTQ4LjY2MWMxLjQ3My0yMS4yNjQsMy41NDItNDQuNDQsNi4zMjItNjMuMzUyaDI2LjA3DQoJCWwyOS43MjcsOTIuNTI2bDMxLjQ4My05Mi41MjZoMjMuODQ1QzEyMy44MzEsMjQ5LjcxLDEzMy4zNzEsMzMxLjI2NCwxMzMuMzcxLDM3NC42NTl6Ii8+DQoJPHBhdGggc3R5bGU9ImZpbGw6I0ZGQTYwMDsiIGQ9Ik0xNDQuNDIzLDI4My40NTJsMjAuNjY4LTAuMzE4YzAsMCwyMy4yMTIsNjkuNjM3LDIwLjk4Nyw3OC4yMjJjMCwwLDE0Ljk0NS00MS42NTUsMTguNzYxLTc4LjIyMg0KCQloMjAuMzVjMCwwLTEwLjgxMiw3My43NzEtNDMuODgsMTEyLjU2NGMtMTIuMzc1LDE0LjUxNy0yNi4yNjIsMTQuNjk1LTM4Ljc5OSw5LjIzNnYtMTEuMTQzYzAsMCwxNy4xNzcsNi4wNDIsMjYuMDgxLTYuNjc4DQoJCWM3LjE2OC0xMC4yNCwwLjMyMi0yNy44OTgtNS45MzgtNDYuNjcxQzE2MS4xMzUsMzM1Ljg5NiwxNDQuNDIzLDI4My40NTIsMTQ0LjQyMywyODMuNDUyeiIvPg0KPC9nPg0KPGc+DQoJPHBhdGggc3R5bGU9ImZpbGw6IzUxODFBMjsiIGQ9Ik0yMzcuOTA4LDM2NS40OTFsNS40MDUtMTAuODEyYzAsMCwzNy4yMDQsMTYuNTM0LDQ2Ljc0MiwwYzkuNTM5LTE2LjUzNCwwLjMxOC0yNS40MzgtMTguNDQyLTM1LjI5Ng0KCQljLTE4Ljc2LTkuODU4LTM4LjQ3NS0yMi4yNTgtMjkuODktNDkuMjg3YzguNTg2LTI3LjAyOCw1NC4wNTYtMjUuMTIsNjcuMDkzLTEyLjA4M2wtNC40NTEsMTAuNDkzYzAsMC0zMy43MDUtMTQuMzA5LTQyLjkyNiw0LjQ1MQ0KCQljLTkuMjIxLDE4Ljc2LDE1LjI2MywyNy42NjQsMjAuOTg3LDMwLjIwOGM1LjcyNCwyLjU0NCwzNy41MjEsMTUuNTgsMzQuMDI0LDM4Ljc5M3MtMTcuODA3LDM3LjUyMS01MC41NTgsMzQuNjU5DQoJCUMyNTQuMTI0LDM3My43NTgsMjQ3LjQ0NywzNzEuODUsMjM3LjkwOCwzNjUuNDkxeiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1MTgxQTI7IiBkPSJNNDA1LjQ1MiwzNjdjMTQuMDU0LTExLjI5NSwyMC4wODMtMzEuMzg5LDIwLjA4My01NC4yOTNjMC0zNS4zMjgtMTAuMTY3LTYzLjk2OS01MC4zMzMtNjMuOTY5DQoJCWMtMzQuNTg2LDAtNTAuMzMzLDI4LjY0MS01MC4zMzMsNjMuOTY5czExLjUxNSw2My45NjksNTAuMzMzLDYzLjk2OWM1LjYyMiwwLDEwLjcyMS0wLjcsMTUuMzE4LTIuMDE3bDI5LjkwNSwxNy41NDRsNy4zMTQtMTQuMzE1DQoJCUw0MDUuNDUyLDM2N3ogTTM3NS4yMDIsMzYxLjM1N2MtMjIuNTA3LDAtMjkuMTg0LTIxLjc4Ni0yOS4xODQtNDguNjVjMC0yNi44NzUsNi4zNjMtNDguNjUsMjkuMTg0LTQ4LjY1DQoJCWMyMy4yOCwwLDI5LjE3NCwyMS43NzYsMjkuMTc0LDQ4LjY1QzQwNC4zNzUsMzM5LjU3MSwzOTguNDgyLDM2MS4zNTcsMzc1LjIwMiwzNjEuMzU3eiIvPg0KCTxwYXRoIHN0eWxlPSJmaWxsOiM1MTgxQTI7IiBkPSJNNDkwLjA4OCwzNTkuNzY5Yy0yLjI4OCw1LjE4My00Ljc2NSwxMC4yNzEtNy4zODcsMTUuMjY2aC0zOS4zODJWMjUwLjM3OGgxOS43MTd2MTA5LjM5SDQ5MC4wODh6Ig0KCQkvPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=",
+      "module": "importData",
+      "module_name": "mysql",
+      "visible": true,
+      "options": false,
+      "father": "module",
+      "group": "scripts",
+      "linux": false,
+      "windows": true,
+      "mac": false,
       "docker": true
     },
     {

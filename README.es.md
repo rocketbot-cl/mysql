@@ -1,3 +1,7 @@
+
+
+
+
 # MySQL
   
 Módulo para trabajar con base de datos MySQL. Usar solo si no funciona la versión nativa del comando  
@@ -20,10 +24,16 @@ Configura conexión MySQL, puedes usar un identificador para cambiar entre otras
 2. Consulta MySQL  
 Realiza una consulta MySQL(Select, insert, delete, etc)
 
-3. Obtener la ultima fila insertada  
+3. Ejecuta Multiples Updates  
+Realiza Multiples Updates en una ejecución
+
+4. Importar datos  
+Importar datos a una base de datos MySQL
+
+5. Obtener la ultima fila insertada  
 Realiza una consulta a MySQL para obtener la ultima fila insertada
 
-4. Cerrar conexión  
+6. Cerrar conexión  
 Cierra una conexión de oracle por sesión  
 
 

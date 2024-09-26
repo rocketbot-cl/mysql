@@ -1,54 +1,83 @@
+
+
+
+
 # MySQL
   
-Module to work with MySQL database. Use only if the native version of the command does not work  
+Módulo para trabajar con base de datos MySQL. Usar solo si no funciona la versión nativa del comando  
 
 *Read this in other languages: [English](Manual_mysql.md), [Português](Manual_mysql.pr.md), [Español](Manual_mysql.es.md)*
   
 ![banner](imgs/Banner_mysql.png)
-## How to install this module
+## Como instalar este módulo
   
-To install the module in Rocketbot Studio, it can be done in two ways:
-1. Manual: __Download__ the .zip file and unzip it in the modules folder. The folder name must be the same as the module and inside it must have the following files and folders: \__init__.py, package.json, docs, example and libs. If you have the application open, refresh your browser to be able to use the new module.
-2. Automatic: When entering Rocketbot Studio on the right margin you will find the **Addons** section, select **Install Mods**, search for the desired module and press install.  
+Para instalar el módulo en Rocketbot Studio, se puede hacer de dos formas:
+1. Manual: __Descargar__ el archivo .zip y descomprimirlo en la carpeta modules. El nombre de la carpeta debe ser el mismo al del módulo y dentro debe tener los siguientes archivos y carpetas: \__init__.py, package.json, docs, example y libs. Si tiene abierta la aplicación, refresca el navegador para poder utilizar el nuevo modulo.
+2. Automática: Al ingresar a Rocketbot Studio sobre el margen derecho encontrara la sección de **Addons**, seleccionar **Install Mods**, buscar el modulo deseado y presionar install.  
 
 
-## Description of the commands
+## Descripción de los comandos
 
-### Connect
+### Conectar
   
-Configure MySQL connection to server, can use identifier for change between others connections
-|Parameters|Description|example|
+Configura conexión MySQL, puedes usar un identificador para cambiar entre otras conexiones
+|Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|Url Server|Server url, can be an IP or a domain|127.0.0.1|
-|Port|Connection port, default 3306|3306|
-|Database|Database name|database_name|
-|User|Database user|Rocketbot|
-|Password|User password|secr3t_p@ss|
-|Session|Connection identifier, if empty the default connection will be used|Conn1|
-|Result|Variable where the result of the connection is stored|connected|
+|Url de Servidor|Url de servidor, puede ser una IP o un dominio|127.0.0.1|
+|Puerto|Puerto de conexión, por defecto 3306|3306|
+|Base de datos|Nombre de la base de datos|database_name|
+|Usuario|Usuario de la base de datos|Rocketbot|
+|Contraseña|Contraseña del usuario|secr3t_p@ss|
+|Sesión|Identificador de la conexión, si se deja vacío se usará la conexión por defecto|Conn1|
+|Resultado|Variable donde se almacena el resultado de la conexión|conectado|
 
-### Query MySQL
+### Consulta MySQL
   
-Create MySQL query (Select, insert, delete, etc)
-|Parameters|Description|example|
+Realiza una consulta MySQL(Select, insert, delete, etc)
+|Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|Query|Query to execute|select * from db|
-|Session|Connection identifier|Conn1|
-|Result|Variable where the result of the query is stored|result|
+|Consulta|Consulta a realizar|select * from db|
+|Sesión|Identificador de la conexión|Conn1|
+|Resultado|Variable donde se almacena el resultado de la consulta|resultado|
 
-### Get last row inserted
+### Ejecuta Multiples Updates
   
-Gets the last row inserted
-|Parameters|Description|example|
+Realiza Multiples Updates en una ejecución
+|Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|Table were the last insert happened|Table name were the last insert happened|Inventory|
-|Primary Key|Column name that is primary key|id|
-|Session|Connection identifier|Conn1|
-|Result|Variable where the result is stored|result|
+|Sesión|Identificador de la conexión|Conn1|
+|Resultado|Variable donde se almacena el resultado de la consulta|resultado|
+|Update a realizar|Update a realizar|UPDATE city SET name = %s, capital = %s WHERE ID = %s|
+|Lista de valores a asignar en las columnas en orden|Lista de valores a asignar en las columnas|[['Chile', 'Argentina', 'Venezuela'], ['Santiago', 'Buenos Aires', 'Caracas']]|
+|Lista de cláusulas|Cláusula|[1, 2, 3]|
+|Solo hay una columna|Si se marca esta casilla, indica que solo hay una columna para updatear|True|
 
-### Close connection
+### Importar datos
   
-Close oracle connection for session
-|Parameters|Description|example|
+Importar datos a una base de datos MySQL
+|Parámetros|Descripción|ejemplo|
 | --- | --- | --- |
-|Session|Connection identifier|Conn1|
+|Sesión|Nombre de la sesión de conexión|Conn1|
+|Nombre de hoja|Nombre de la hoja de cálculo a importar|Hoja1|
+|Schema de la tabla|Esquema de la tabla a importar.|Esquema|
+|Nombre de la tabla a importar|Nombre de la tabla SQL donde se importarán los datos. Si no existe, se creará.|Tabla|
+|Ruta del archivo base|Ruta del archivo base a importar|Ruta|
+|Tamaño del lote|Las filas se escribirán en lotes de este tamaño a la vez. Por defecto, todas las filas se escribirán a la vez.|2000|
+|Metodo|||
+
+### Obtener la ultima fila insertada
+  
+Realiza una consulta a MySQL para obtener la ultima fila insertada
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|Tabla donde se inserto ultimo|Nombre de la tabla donde se inserto ultimo|Inventory|
+|Primary Key|Nombre de la columna que es primary key|id|
+|Sesión|Identificador de la conexión|Conn1|
+|Resultado|Variable donde se almacena el resultado de la consulta|resultado|
+
+### Cerrar conexión
+  
+Cierra una conexión de oracle por sesión
+|Parámetros|Descripción|ejemplo|
+| --- | --- | --- |
+|Sesión|Identificador de la conexión|Conn1|

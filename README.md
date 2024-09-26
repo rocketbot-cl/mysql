@@ -1,3 +1,7 @@
+
+
+
+
 # MySQL
   
 Module to work with MySQL database. Use only if the native version of the command does not work  
@@ -20,10 +24,16 @@ Configure MySQL connection to server, can use identifier for change between othe
 2. Query MySQL  
 Create MySQL query (Select, insert, delete, etc)
 
-3. Get last row inserted  
+3. Executes Multiple Updates  
+Executes multiple updates at once
+
+4. Import data  
+Import data to a MySQL database
+
+5. Get last row inserted  
 Gets the last row inserted
 
-4. Close connection  
+6. Close connection  
 Close oracle connection for session  
 
 
