@@ -227,10 +227,11 @@ if module =="importData":
         df.to_sql(tabla, con=engine, schema=schema, if_exists='replace', index=False, chunksize=chunk, method=method)
 
     except Exception as e:
+        print("estoy aqui")
         print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
         PrintException()
-        conn.close()
-        raise Exception(e)
+        #conn.close()
+        raise e
 
 
 if module == "close":
