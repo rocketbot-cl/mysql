@@ -581,14 +581,14 @@
                       "pr": "Tabela"
                   },
                   "title": {
-                      "es": "Nombre de la tabla a importar",
-                      "en": "Name of the table to import",
-                      "pr": "Nome da tabela a importar"
+                      "es": "Nombre de la tabla",
+                      "en": "Name of the table",
+                      "pr": "Nome da tabela"
                   },
                   "description": {
-                      "es": "Nombre de la tabla SQL donde se importarán los datos. Si no existe, se creará.",
-                      "en": "Name of the SQL table where the data will be imported. If it does not exist, it will be created.",
-                      "pr": "Nome da tabela SQL onde os dados serão importados. Se não existir, será criado."
+                      "es": "Nombre de la tabla MySQL donde se importarán los datos. Si no existe, se creará.",
+                      "en": "Name of the MySQL table where the data will be imported. If it does not exist, it will be created.",
+                      "pr": "Nome da tabela MySQL onde os dados serão importados. Se não existir, será criado."
                   },
                   "id": "tabla",
                   "css": "col-md-3",

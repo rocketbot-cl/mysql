@@ -217,7 +217,9 @@ if module =="importData":
         
         if not method or method == "None":
             method = None
-                
+        if not tabla:
+            raise Exception("Debe Escribir el nombre de la tabla")
+
         engine = mod_mysql_sessions[session]["engine"]
         if hoja:
             df = pd.read_excel(path_file, sheet_name=hoja, engine='openpyxl')
@@ -227,10 +229,8 @@ if module =="importData":
         df.to_sql(tabla, con=engine, schema=schema, if_exists='replace', index=False, chunksize=chunk, method=method)
 
     except Exception as e:
-        print("estoy aqui")
         print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
         PrintException()
-        #conn.close()
         raise e
 
 
