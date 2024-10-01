@@ -23,9 +23,48 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
     pip install <package> -t .
 
 """
+import os
+import sys
 import pymysql
+import pandas as pd
 import datetime
 from decimal import Decimal
+
+
+# Add modules libraries to Rocektbot
+# -----------------------------------
+base_path = tmp_global_obj["basepath"]
+cur_path = os.path.join(base_path, 'modules', 'mysql', 'libs')
+
+cur_path_x64 = os.path.join(cur_path, 'Windows' + os.sep +  'x64' + os.sep)
+cur_path_x86 = os.path.join(cur_path, 'Windows' + os.sep +  'x86' + os.sep)
+
+if sys.maxsize >= 2**32 and cur_path_x64 not in sys.path:
+        sys.path.append(cur_path_x64)
+if sys.maxsize < 2**32 and cur_path_x86 not in sys.path:
+        sys.path.append(cur_path_x86)
+
+def import_lib(relative_path, name, class_name=None):
+    """
+    - relative_path: library path from the module's libs folder
+    - name: library name
+    - class_name: class name to be imported. As 'from name import class_name'
+    """
+
+    import importlib.util
+
+    cur_path = base_path + 'modules' + os.sep + \
+        'mysql' + os.sep + 'libs' + os.sep
+
+    spec = importlib.util.spec_from_file_location(
+        name, cur_path + relative_path)
+    foo = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(foo)
+    if class_name is not None:
+        return getattr(foo, class_name)
+    return foo
+
+
 global mysql_module
 
 # Globals declared here
@@ -52,6 +91,11 @@ if module == "connect":
     var_ = GetParams("result")
 
     try:
+        if sys.maxsize > 2**32:
+            create_engine = import_lib(f"Windows{os.sep}x64{os.sep}sqlalchemy{os.sep}__init__.py", "sqlalchemy", "create_engine") # from sqlalchemy import create_engine
+        if sys.maxsize > 32:
+            create_engine = import_lib(f"Windows{os.sep}x86{os.sep}sqlalchemy{os.sep}__init__.py", "sqlalchemy", "create_engine") #    
+
         if not port or port == "":
             port = 3306
         port = int(port)
@@ -73,8 +117,14 @@ if module == "connect":
         cursor = conn.cursor(pymysql.cursors.DictCursor)
         mod_mysql_sessions[session] = {
             "connection": r,
-            "cursor": cursor
+            "cursor": cursor,
+            "engine": None
         }
+        engine = create_engine(
+                f"mysql+pymysql://{user}:{password}@{host}:{port}/{database}",
+                echo=False
+                )
+        mod_mysql_sessions[session]["engine"] = engine        
         #r.close()
         SetVar( var_,  res)
     except Exception as e:
@@ -112,6 +162,76 @@ if module =="query":
         PrintException()
         conn.close()
         raise Exception(e)
+
+if module =="manyUpdates":
+    session = GetParams("session")
+    query = GetParams("table")
+    colum_values = GetParams("list1")
+    clausulas_values = GetParams("list2")
+    oneTable = GetParams("onetable")
+    var_ = GetParams("result1")
+    
+    try:
+        
+        if not session:
+            session = SESSION_DEFAULT
+
+        cursor = mod_mysql_sessions[session]["cursor"]
+        conn = mod_mysql_sessions[session]["connection"]
+        colum_values = eval(colum_values)
+        clausulas_values = eval(clausulas_values) 
+      
+        if oneTable:
+            data = list(zip(colum_values, clausulas_values))
+        else:
+            data = list(zip(*colum_values, clausulas_values))
+        cursor.executemany(query, data)
+        conn.commit()
+        data = True
+
+        SetVar(var_, data)
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
+        PrintException()
+        conn.close()
+        raise Exception(e)
+
+if module =="importData":
+    session = GetParams('session')
+    hoja = GetParams('hoja')
+    schema = GetParams('schema')
+    tabla = GetParams('tabla')
+    path_file = GetParams('path_file')
+    chunk = GetParams('chunk')
+    method = GetParams('method')
+
+    try:
+        
+        if not session:
+            session = SESSION_DEFAULT
+
+        if chunk:
+            chunk = int(chunk)
+        else:
+            chunk = None
+        
+        if not method or method == "None":
+            method = None
+        if not tabla:
+            raise Exception("Debe Escribir el nombre de la tabla")
+
+        engine = mod_mysql_sessions[session]["engine"]
+        if hoja:
+            df = pd.read_excel(path_file, sheet_name=hoja, engine='openpyxl')
+        else:
+            df = pd.read_excel(path_file, engine='openpyxl')
+        
+        df.to_sql(tabla, con=engine, schema=schema, if_exists='replace', index=False, chunksize=chunk, method=method)
+
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
+        PrintException()
+        raise e
 
 
 if module == "close":
