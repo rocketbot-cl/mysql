@@ -233,23 +233,6 @@ if module =="importData":
         PrintException()
         raise e
 
-
-if module == "close":
-    session = GetParams('session')
-
-    if not session:
-        session = SESSION_DEFAULT
-
-    cursor = mod_mysql_sessions[session]["cursor"]
-    con = mod_mysql_sessions[session]["connection"]
-
-    try:
-        cursor.close()
-        con.close()
-    except Exception as e:
-        PrintException()
-        raise e
-
 if module == "getLastInsertedId":
     session = GetParams('session')
     var_ = GetParams("result")
@@ -277,5 +260,18 @@ if module == "getLastInsertedId":
 
     SetVar(var_, data)
 
-    
+if module == "close":
+    session = GetParams('session')
 
+    if not session:
+        session = SESSION_DEFAULT
+
+    cursor = mod_mysql_sessions[session]["cursor"]
+    con = mod_mysql_sessions[session]["connection"]
+
+    try:
+        cursor.close()
+        con.close()
+    except Exception as e:
+        PrintException()
+        raise e
