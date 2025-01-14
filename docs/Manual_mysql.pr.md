@@ -8,7 +8,7 @@ Módulo para trabalhar com banco de dados MySQL. Use apenas se a versão nativa 
 
 *Read this in other languages: [English](Manual_mysql.md), [Português](Manual_mysql.pr.md), [Español](Manual_mysql.es.md)*
   
-![banner](imgs/Banner_mysql.png)
+![banner](imgs/Banner_mysql.png o jpg)
 ## Como instalar este módulo
   
 Para instalar o módulo no Rocketbot Studio, pode ser feito de duas formas:
@@ -60,7 +60,7 @@ Importar dados para um banco de dados MySQL
 |Sessão|Nome da sessão de conexão|Conn1|
 |Nome da folha|Nome da planilha para importar|Folha1|
 |Esquema da tabela|Esquema da tabela para importar.|schema|
-|Nome da tabela a importar|Nome da tabela SQL onde os dados serão importados. Se não existir, será criado.|Tabela|
+|Nome da tabela|Nome da tabela MySQL onde os dados serão importados. Se não existir, será criado.|Tabela|
 |Caminho do arquivo base|Caminho do arquivo base para importar|Caminho|
 |Tamanho do batch|As linhas serão gravadas em lotes desse tamanho por vez. Por padrão, todas as linhas serão gravadas de uma só vez.|2000|
 |Método|||
