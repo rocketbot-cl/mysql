@@ -141,8 +141,10 @@ if module =="query":
             session = SESSION_DEFAULT
         cursor = mod_mysql_sessions[session]["cursor"]
         conn = mod_mysql_sessions[session]["connection"]
+        normalized_query = query.strip().upper()
         cursor.execute(query)
-        if query.upper().startswith('SELECT'):
+
+        if normalized_query.startswith('SELECT'):
             data_ = cursor.fetchall()  # Traer los resultados de un select
             for r in data_:
                 for d in r:
@@ -151,11 +153,32 @@ if module =="query":
                     if isinstance(r[d], Decimal):
                         r[d] = float(r[d])
             data = data_
+        elif normalized_query.startswith('CALL'):
+            all_results = []
+            while True:
+                result_set = cursor.fetchall()
+                for r in result_set:
+                    for d in r:
+                        if isinstance(r[d], datetime.date):
+                            r[d] = r[d].strftime("%d-%m-%Y %H:%M:%S")
+                        if isinstance(r[d], Decimal):
+                            r[d] = float(r[d])
+                if result_set:
+                    all_results.append(result_set)
+                if not cursor.nextset():
+                    break
+
+            if len(all_results) == 0:
+                data = True
+            elif len(all_results) == 1:
+                data = all_results[0]
+            else:
+                data = all_results
         else:
             conn.commit()
-            # Hacer efectiva la escritura de datos
+            
             data = True
-        #conn.close()
+        
         SetVar(var_, data)
     except Exception as e:
         print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
