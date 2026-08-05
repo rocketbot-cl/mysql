@@ -41,7 +41,7 @@ cur_path_x86 = os.path.join(cur_path, 'Windows' + os.sep +  'x86' + os.sep)
 
 if sys.maxsize >= 2**32 and cur_path_x64 not in sys.path:
         sys.path.append(cur_path_x64)
-if sys.maxsize < 2**32 and cur_path_x86 not in sys.path:
+elif sys.maxsize < 2**32 and cur_path_x86 not in sys.path:
         sys.path.append(cur_path_x86)
 
 def import_lib(relative_path, name, class_name=None):
@@ -91,9 +91,9 @@ if module == "connect":
     var_ = GetParams("result")
 
     try:
-        if sys.maxsize > 2**32:
+        if sys.maxsize >= 2**32:
             create_engine = import_lib(f"Windows{os.sep}x64{os.sep}sqlalchemy{os.sep}__init__.py", "sqlalchemy", "create_engine") # from sqlalchemy import create_engine
-        if sys.maxsize > 32:
+        elif sys.maxsize < 2**32:
             create_engine = import_lib(f"Windows{os.sep}x86{os.sep}sqlalchemy{os.sep}__init__.py", "sqlalchemy", "create_engine") #    
 
         if not port or port == "":
